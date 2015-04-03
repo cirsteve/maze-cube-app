@@ -32,7 +32,7 @@ var AppComponent = React.createClass({
     },
 
     onChange: function () {
-        getAppState(getAppState);
+        this.setState(getAppState);
     }
 });
 
