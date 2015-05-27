@@ -7,6 +7,7 @@ var getAppState = function () {
     return MazeStore.getRenderData();
 };
 
+
 var AppComponent = React.createClass({
     getInitialState: function () {
         return getAppState();
@@ -32,7 +33,7 @@ var AppComponent = React.createClass({
     },
 
     onChange: function () {
-        getAppState(getAppState);
+        getAppState(getAppState());
     }
 });
 
