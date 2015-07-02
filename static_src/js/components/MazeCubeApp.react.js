@@ -14,7 +14,7 @@ var AppComponent = React.createClass({
     },
 
     render: function () {
-        var appState = getAppState();
+        var appState = this.state;
         return (
             <div>
                 <h1>Maze Cube</h1>
@@ -33,7 +33,7 @@ var AppComponent = React.createClass({
     },
 
     onChange: function () {
-        getAppState(getAppState());
+        this.setState(getAppState());
     }
 });
 

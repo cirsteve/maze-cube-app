@@ -1,15 +1,11 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node',
-1 verbose cli   '/usr/bin/npm',
-1 verbose cli   'install',
-1 verbose cli   '--save-dev',
-1 verbose cli   'emvify' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'three', '--save' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.37
 4 verbose node symlink /usr/bin/node
 5 verbose readDependencies using package.json deps
-6 verbose cache add [ 'emvify', null ]
-7 verbose cache add name=undefined spec="emvify" args=["emvify",null]
+6 verbose cache add [ 'three', null ]
+7 verbose cache add name=undefined spec="three" args=["three",null]
 8 verbose parsed url { protocol: null,
 8 verbose parsed url   slashes: null,
 8 verbose parsed url   auth: null,
@@ -19,69 +15,257 @@
 8 verbose parsed url   hash: null,
 8 verbose parsed url   search: null,
 8 verbose parsed url   query: null,
-8 verbose parsed url   pathname: 'emvify',
-8 verbose parsed url   path: 'emvify',
-8 verbose parsed url   href: 'emvify' }
-9 silly lockFile b38f3286-emvify emvify
-10 verbose lock emvify /home/steve/.npm/b38f3286-emvify.lock
-11 silly lockFile b38f3286-emvify emvify
-12 silly lockFile b38f3286-emvify emvify
-13 verbose addNamed [ 'emvify', '' ]
+8 verbose parsed url   pathname: 'three',
+8 verbose parsed url   path: 'three',
+8 verbose parsed url   href: 'three' }
+9 silly lockFile b802f384-three three
+10 verbose lock three /home/steve/.npm/b802f384-three.lock
+11 silly lockFile b802f384-three three
+12 silly lockFile b802f384-three three
+13 verbose addNamed [ 'three', '' ]
 14 verbose addNamed [ null, '*' ]
-15 silly lockFile cbc05a70-emvify emvify@
-16 verbose lock emvify@ /home/steve/.npm/cbc05a70-emvify.lock
-17 silly addNameRange { name: 'emvify', range: '*', hasData: false }
-18 verbose request where is /emvify
+15 silly lockFile 1adcbb4d-three three@
+16 verbose lock three@ /home/steve/.npm/1adcbb4d-three.lock
+17 silly addNameRange { name: 'three', range: '*', hasData: false }
+18 verbose request where is /three
 19 verbose request registry https://registry.npmjs.org/
-20 verbose request id 44ce9bff3e4a4dd0
-21 verbose url raw /emvify
-22 verbose url resolving [ 'https://registry.npmjs.org/', './emvify' ]
-23 verbose url resolved https://registry.npmjs.org/emvify
-24 verbose request where is https://registry.npmjs.org/emvify
-25 info trying registry request attempt 1 at 18:44:05
-26 http GET https://registry.npmjs.org/emvify
-27 http 404 https://registry.npmjs.org/emvify
-28 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-28 verbose headers   'content-type': 'application/json',
-28 verbose headers   'cache-control': 'max-age=0',
-28 verbose headers   'content-length': '51',
-28 verbose headers   'accept-ranges': 'bytes',
-28 verbose headers   date: 'Wed, 27 May 2015 01:44:06 GMT',
-28 verbose headers   via: '1.1 varnish',
-28 verbose headers   age: '0',
-28 verbose headers   connection: 'keep-alive',
-28 verbose headers   'x-served-by': 'cache-lax1422-LAX',
-28 verbose headers   'x-cache': 'MISS',
-28 verbose headers   'x-cache-hits': '0',
-28 verbose headers   'x-timer': 'S1432691045.912738,VS0,VE335' }
-29 silly registry.get cb [ 404,
-29 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-29 silly registry.get     'content-type': 'application/json',
-29 silly registry.get     'cache-control': 'max-age=0',
-29 silly registry.get     'content-length': '51',
-29 silly registry.get     'accept-ranges': 'bytes',
-29 silly registry.get     date: 'Wed, 27 May 2015 01:44:06 GMT',
+20 verbose request id 145cf347fc16f7ab
+21 verbose url raw /three
+22 verbose url resolving [ 'https://registry.npmjs.org/', './three' ]
+23 verbose url resolved https://registry.npmjs.org/three
+24 verbose request where is https://registry.npmjs.org/three
+25 info trying registry request attempt 1 at 23:21:38
+26 verbose etag "6LHPM9LL508482VUMCN97AMPM"
+27 http GET https://registry.npmjs.org/three
+28 http 304 https://registry.npmjs.org/three
+29 silly registry.get cb [ 304,
+29 silly registry.get   { date: 'Sat, 06 Jun 2015 06:21:39 GMT',
 29 silly registry.get     via: '1.1 varnish',
+29 silly registry.get     'cache-control': 'max-age=60',
+29 silly registry.get     etag: '"6LHPM9LL508482VUMCN97AMPM"',
 29 silly registry.get     age: '0',
 29 silly registry.get     connection: 'keep-alive',
-29 silly registry.get     'x-served-by': 'cache-lax1422-LAX',
+29 silly registry.get     'x-served-by': 'cache-lax1420-LAX',
 29 silly registry.get     'x-cache': 'MISS',
 29 silly registry.get     'x-cache-hits': '0',
-29 silly registry.get     'x-timer': 'S1432691045.912738,VS0,VE335' } ]
-30 silly lockFile cbc05a70-emvify emvify@
-31 silly lockFile cbc05a70-emvify emvify@
-32 error 404 404 Not Found: emvify
-32 error 404
-32 error 404 'emvify' is not in the npm registry.
-32 error 404 You should bug the author to publish it
-32 error 404 It was specified as a dependency of 'maze-cube-app'
-32 error 404
-32 error 404 Note that you can also install from a
-32 error 404 tarball, folder, or http url, or git url.
-33 error System Linux 3.16.0-38-generic
-34 error command "/usr/bin/node" "/usr/bin/npm" "install" "--save-dev" "emvify"
-35 error cwd /home/steve/codes/maze-cube-app
-36 error node -v v0.10.37
-37 error npm -v 1.4.28
-38 error code E404
-39 verbose exit [ 1, true ]
+29 silly registry.get     'x-timer': 'S1433571699.015835,VS0,VE47',
+29 silly registry.get     vary: 'Accept' } ]
+30 verbose etag https://registry.npmjs.org/three from cache
+31 silly addNameRange number 2 { name: 'three', range: '*', hasData: true }
+32 silly addNameRange versions [ 'three',
+32 silly addNameRange   [ '0.54.0-dev',
+32 silly addNameRange     '0.54.1-dev',
+32 silly addNameRange     '0.54.2-dev',
+32 silly addNameRange     '0.54.3-dev',
+32 silly addNameRange     '0.54.4-dev',
+32 silly addNameRange     '0.54.5-dev',
+32 silly addNameRange     '0.54.6-dev',
+32 silly addNameRange     '0.54.7-dev',
+32 silly addNameRange     '0.54.8-dev',
+32 silly addNameRange     '0.54.9-dev',
+32 silly addNameRange     '0.54.10-dev',
+32 silly addNameRange     '0.54.11-dev',
+32 silly addNameRange     '0.54.12-dev',
+32 silly addNameRange     '0.54.0',
+32 silly addNameRange     '0.55.0',
+32 silly addNameRange     '0.56.0',
+32 silly addNameRange     '0.56.1',
+32 silly addNameRange     '0.56.2',
+32 silly addNameRange     '0.56.3',
+32 silly addNameRange     '0.56.4',
+32 silly addNameRange     '0.58.1',
+32 silly addNameRange     '0.58.2',
+32 silly addNameRange     '0.58.3',
+32 silly addNameRange     '0.58.4',
+32 silly addNameRange     '0.58.5',
+32 silly addNameRange     '0.58.6',
+32 silly addNameRange     '0.56.7',
+32 silly addNameRange     '0.58.7',
+32 silly addNameRange     '0.58.8',
+32 silly addNameRange     '0.58.9',
+32 silly addNameRange     '0.58.10',
+32 silly addNameRange     '0.66.0',
+32 silly addNameRange     '0.66.1',
+32 silly addNameRange     '0.66.2',
+32 silly addNameRange     '0.67.0',
+32 silly addNameRange     '0.68.0',
+32 silly addNameRange     '0.66.6',
+32 silly addNameRange     '0.66.7',
+32 silly addNameRange     '0.66.8',
+32 silly addNameRange     '0.66.9',
+32 silly addNameRange     '0.66.10',
+32 silly addNameRange     '0.66.11',
+32 silly addNameRange     '0.66.12',
+32 silly addNameRange     '0.66.13',
+32 silly addNameRange     '0.66.14',
+32 silly addNameRange     '0.66.15',
+32 silly addNameRange     '0.66.16',
+32 silly addNameRange     '0.66.17',
+32 silly addNameRange     '0.66.18',
+32 silly addNameRange     '0.66.19',
+32 silly addNameRange     '0.69.0',
+32 silly addNameRange     '0.66.20',
+32 silly addNameRange     '0.66.21',
+32 silly addNameRange     '0.66.22',
+32 silly addNameRange     '0.66.23',
+32 silly addNameRange     '0.66.24',
+32 silly addNameRange     '0.66.25',
+32 silly addNameRange     '0.66.26',
+32 silly addNameRange     '0.66.27',
+32 silly addNameRange     '0.66.28',
+32 silly addNameRange     '0.66.29',
+32 silly addNameRange     '0.66.30',
+32 silly addNameRange     '0.66.31',
+32 silly addNameRange     '0.66.32-dev',
+32 silly addNameRange     '0.66.35',
+32 silly addNameRange     '0.66.36',
+32 silly addNameRange     '0.66.37',
+32 silly addNameRange     '0.66.38',
+32 silly addNameRange     '0.66.39',
+32 silly addNameRange     '0.66.40',
+32 silly addNameRange     '0.70.0',
+32 silly addNameRange     '0.66.41',
+32 silly addNameRange     '0.66.42',
+32 silly addNameRange     '0.66.43',
+32 silly addNameRange     '0.66.45',
+32 silly addNameRange     '0.66.46',
+32 silly addNameRange     '0.66.47',
+32 silly addNameRange     '0.66.48',
+32 silly addNameRange     '0.66.49',
+32 silly addNameRange     '0.66.50',
+32 silly addNameRange     '0.66.51',
+32 silly addNameRange     '0.66.52',
+32 silly addNameRange     '0.66.53',
+32 silly addNameRange     '0.66.54',
+32 silly addNameRange     '0.66.55',
+32 silly addNameRange     '0.66.56',
+32 silly addNameRange     '0.66.57',
+32 silly addNameRange     '0.66.58',
+32 silly addNameRange     '0.66.59',
+32 silly addNameRange     '0.66.60',
+32 silly addNameRange     '0.66.61',
+32 silly addNameRange     '0.66.62',
+32 silly addNameRange     '0.66.63',
+32 silly addNameRange     '0.71.0',
+32 silly addNameRange     '0.70.1',
+32 silly addNameRange     '0.66.64',
+32 silly addNameRange     '0.66.65',
+32 silly addNameRange     '0.66.66',
+32 silly addNameRange     '0.66.67',
+32 silly addNameRange     '0.66.68',
+32 silly addNameRange     '0.66.69',
+32 silly addNameRange     '0.66.70',
+32 silly addNameRange     '0.66.71',
+32 silly addNameRange     '0.66.72',
+32 silly addNameRange     '0.66.73',
+32 silly addNameRange     '0.66.74',
+32 silly addNameRange     '0.66.75',
+32 silly addNameRange     '0.66.76',
+32 silly addNameRange     '0.66.77',
+32 silly addNameRange     '0.66.78',
+32 silly addNameRange     '0.66.79',
+32 silly addNameRange     '0.66.80' ] ]
+33 verbose addNamed [ 'three', '0.71.0' ]
+34 verbose addNamed [ '0.71.0', '0.71.0' ]
+35 silly lockFile ffde4c67-three-0-71-0 three@0.71.0
+36 verbose lock three@0.71.0 /home/steve/.npm/ffde4c67-three-0-71-0.lock
+37 silly lockFile 29d28919-npmjs-org-three-three-0-71-0-tgz https://registry.npmjs.org/three/-/three-0.71.0.tgz
+38 verbose lock https://registry.npmjs.org/three/-/three-0.71.0.tgz /home/steve/.npm/29d28919-npmjs-org-three-three-0-71-0-tgz.lock
+39 verbose addRemoteTarball [ 'https://registry.npmjs.org/three/-/three-0.71.0.tgz',
+39 verbose addRemoteTarball   '5af9f85e90d2cfb076dbdd84c384289c5a256d89' ]
+40 info retry fetch attempt 1 at 23:21:39
+41 verbose fetch to= /tmp/npm-4775-f41U1wMp/registry.npmjs.org/three/-/three-0.71.0.tgz
+42 http GET https://registry.npmjs.org/three/-/three-0.71.0.tgz
+43 http 200 https://registry.npmjs.org/three/-/three-0.71.0.tgz
+44 silly lockFile 29d28919-npmjs-org-three-three-0-71-0-tgz https://registry.npmjs.org/three/-/three-0.71.0.tgz
+45 silly lockFile 29d28919-npmjs-org-three-three-0-71-0-tgz https://registry.npmjs.org/three/-/three-0.71.0.tgz
+46 silly lockFile ffde4c67-three-0-71-0 three@0.71.0
+47 silly lockFile ffde4c67-three-0-71-0 three@0.71.0
+48 silly lockFile 1adcbb4d-three three@
+49 silly lockFile 1adcbb4d-three three@
+50 silly resolved [ { name: 'three',
+50 silly resolved     version: '0.71.0',
+50 silly resolved     description: 'JavaScript 3D library',
+50 silly resolved     keywords:
+50 silly resolved      [ '3D',
+50 silly resolved        'WebGL',
+50 silly resolved        'Three',
+50 silly resolved        'ThreeJS',
+50 silly resolved        'CSS',
+50 silly resolved        'engine',
+50 silly resolved        'rendering',
+50 silly resolved        'geometry',
+50 silly resolved        'math' ],
+50 silly resolved     homepage: 'http://threejs.org/',
+50 silly resolved     bugs: { url: 'https://github.com/mrdoob/three.js/issues' },
+50 silly resolved     author: { name: 'three.js contributors' },
+50 silly resolved     main: './three.js',
+50 silly resolved     repository: { type: 'git', url: 'git://github.com/mrdoob/three.js.git' },
+50 silly resolved     license:
+50 silly resolved      { type: 'The MIT License',
+50 silly resolved        url: 'https://raw.github.com/mrdoob/three.js/master/LICENSE' },
+50 silly resolved     engines: { node: '*' },
+50 silly resolved     help: { web: 'http://stackoverflow.com/questions/tagged/three.js' },
+50 silly resolved     _id: 'three@0.71.0',
+50 silly resolved     scripts: {},
+50 silly resolved     _shasum: '5af9f85e90d2cfb076dbdd84c384289c5a256d89',
+50 silly resolved     _from: 'three@',
+50 silly resolved     _resolved: 'https://registry.npmjs.org/three/-/three-0.71.0.tgz',
+50 silly resolved     _npmVersion: '2.5.1',
+50 silly resolved     _nodeVersion: '0.12.1',
+50 silly resolved     _npmUser: { name: 'bhouston', email: 'ben@exocortex.com' },
+50 silly resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+50 silly resolved     dist:
+50 silly resolved      { shasum: '5af9f85e90d2cfb076dbdd84c384289c5a256d89',
+50 silly resolved        tarball: 'http://registry.npmjs.org/three/-/three-0.71.0.tgz' },
+50 silly resolved     directories: {} } ]
+51 info install three@0.71.0 into /home/steve/codes/maze-cube-app
+52 info installOne three@0.71.0
+53 verbose node_modules/three unbuild
+54 info preuninstall three@0.70.1
+55 info uninstall three@0.70.1
+56 verbose true,/home/steve/codes/maze-cube-app/node_modules,/home/steve/codes/maze-cube-app/node_modules unbuild three@0.70.1
+57 info postuninstall three@0.70.1
+58 verbose tar unpack /home/steve/.npm/three/0.71.0/package.tgz
+59 silly lockFile 1a6dea64-maze-cube-app-node-modules-three tar:///home/steve/codes/maze-cube-app/node_modules/three
+60 verbose lock tar:///home/steve/codes/maze-cube-app/node_modules/three /home/steve/.npm/1a6dea64-maze-cube-app-node-modules-three.lock
+61 silly lockFile 84123c77-eve-npm-three-0-71-0-package-tgz tar:///home/steve/.npm/three/0.71.0/package.tgz
+62 verbose lock tar:///home/steve/.npm/three/0.71.0/package.tgz /home/steve/.npm/84123c77-eve-npm-three-0-71-0-package-tgz.lock
+63 silly gunzTarPerm modes [ '775', '664' ]
+64 silly gunzTarPerm extractEntry package.json
+65 silly gunzTarPerm modified mode [ 'package.json', 438, 436 ]
+66 silly gunzTarPerm extractEntry README.md
+67 silly gunzTarPerm modified mode [ 'README.md', 438, 436 ]
+68 silly gunzTarPerm extractEntry three.js
+69 silly gunzTarPerm modified mode [ 'three.js', 438, 436 ]
+70 silly gunzTarPerm extractEntry three.min.js
+71 silly gunzTarPerm modified mode [ 'three.min.js', 438, 436 ]
+72 silly lockFile 1a6dea64-maze-cube-app-node-modules-three tar:///home/steve/codes/maze-cube-app/node_modules/three
+73 silly lockFile 1a6dea64-maze-cube-app-node-modules-three tar:///home/steve/codes/maze-cube-app/node_modules/three
+74 silly lockFile 84123c77-eve-npm-three-0-71-0-package-tgz tar:///home/steve/.npm/three/0.71.0/package.tgz
+75 silly lockFile 84123c77-eve-npm-three-0-71-0-package-tgz tar:///home/steve/.npm/three/0.71.0/package.tgz
+76 info preinstall three@0.71.0
+77 verbose readDependencies using package.json deps
+78 verbose readDependencies using package.json deps
+79 silly resolved []
+80 verbose about to build /home/steve/codes/maze-cube-app/node_modules/three
+81 info build /home/steve/codes/maze-cube-app/node_modules/three
+82 verbose linkStuff [ false,
+82 verbose linkStuff   false,
+82 verbose linkStuff   false,
+82 verbose linkStuff   '/home/steve/codes/maze-cube-app/node_modules' ]
+83 info linkStuff three@0.71.0
+84 verbose linkBins three@0.71.0
+85 verbose linkMans three@0.71.0
+86 verbose rebuildBundles three@0.71.0
+87 info install three@0.71.0
+88 info postinstall three@0.71.0
+89 error peerinvalid The package three does not satisfy its siblings' peerDependencies requirements!
+89 error peerinvalid Peer react-three@0.6.1 wants three@^0.70.0
+90 error System Linux 3.19.0-18-generic
+91 error command "/usr/bin/node" "/usr/bin/npm" "install" "three" "--save"
+92 error cwd /home/steve/codes/maze-cube-app
+93 error node -v v0.10.37
+94 error npm -v 1.4.28
+95 error code EPEERINVALID
+96 verbose exit [ 1, true ]

@@ -2,3 +2,12 @@
   width: 30px;
   margin-bottom: 10px;
 }
+
+.maze-target {
+    width: 500px;
+    height: 500px;
+}
+
+.maze, .configure {
+  display: inline-block;
+}

@@ -7,7 +7,8 @@ var MazeCube = require('maze-cube');
 var _config = {
     x: 10,
     y: 10,
-    z: 4
+    z: 4,
+    render: '3d'
 };
 
 var _position = {
@@ -16,19 +17,27 @@ var _position = {
     z: 0
 };
 
-var _maze = {walls:[]};
+
+var _newLevel = false;//true if the current position represents a new z level from the previous position and used in rendering
+
+var _maze = {walls:[[]]};
 
 var MazeStore = assign({}, eventEmitter.prototype, {
     initMaze: function () {
         _maze =  new MazeCube(_config);
+        _newLevel = true;//trigger the render in the view
     },
     getRenderData: function () {
         var z = _position.z;
+        var walls = _maze.walls[z].concat(z > 0 ?
+                _maze.walls[z-1][2] :
+                []);
         return {
-            walls: _maze.walls[z],
-            marker: _position,
+            walls: walls,
+            position: _position,
             config: _config,
-            level: z
+            level: z,
+            newLevel: _newLevel
         };
     },
     getConfig: function () {
@@ -41,16 +50,21 @@ var MazeStore = assign({}, eventEmitter.prototype, {
         _config[dimension] = value;
     },
     updateMarkerPosition: function (dimension, direction) {
-        var updated_position = _.clone(_position);
-        var updated_value = updated_position[dimension];
+        var updatedPosition = _.clone(_position);
+        var updatedValue = updatedPosition[dimension];
         if (direction === '+') {
-            updated_value++;
+            updatedValue++;
         } else {
-            updated_value--;
+            updatedValue--;
         }
-        updated_position[dimension] = updated_value;
-        if (_maze.evaluateMove(_position, updated_position)) {
-            _position = updated_position;
+        updatedPosition[dimension] = updatedValue;
+        if (_maze.evaluateMove(_position, updatedPosition)) {
+            if (_position.z === updatedPosition.z) {
+                _newLevel = false;
+            } else {
+                _newLevel = true;
+            }
+            _position = updatedPosition;
         }
     }
 });
@@ -64,6 +78,7 @@ MazeStore.dispatchToken = dispatcher.register(function(payload) {
             break;
         case 'UPDATE_CONFIG':
             MazeStore.updateConfig(action.dimension, action.value);
+            break;
         case 'UPDATE_POSITION':
             MazeStore.updateMarkerPosition(action.dimension, action.direction);
             break;

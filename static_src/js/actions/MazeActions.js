@@ -8,6 +8,7 @@ var mazeActions = {
         });
     },
     updateConfig: function (dimension, value) {
+        value = parseInt(value.target.value, 10);
         Dispatcher.handleViewAction({
             viewAction: Constants.ActionTypes.UPDATE_CONFIG,
             dimension: dimension,
