@@ -15,11 +15,10 @@ var mazeActions = {
             value: value
         });
     },
-    updatePosition: function (dimension, direction) {
+    updatePosition: function (e) {
         Dispatcher.handleViewAction({
             viewAction: Constants.ActionTypes.UPDATE_POSITION,
-            dimension: dimension,
-            direction: direction
+            key: e.keyCode
         });
     }
 };

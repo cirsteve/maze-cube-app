@@ -16,7 +16,13 @@ var _position = {
     y: 0,
     z: 0
 };
+var mapToArray = function (m) {
+    return [m.x, m.y, m.z];
+};
 
+var arrayToMap = function (a) {
+    return {x: a[0], y: a[1], z: a[2]};
+};
 
 var _newLevel = false;//true if the current position represents a new z level from the previous position and used in rendering
 
@@ -30,7 +36,7 @@ var MazeStore = assign({}, eventEmitter.prototype, {
     getRenderData: function () {
         var z = _position.z;
         var walls = _maze.walls[z].concat(z > 0 ?
-                _maze.walls[z-1][2] :
+                [_maze.walls[z-1][2]] :
                 []);
         return {
             walls: walls,
@@ -49,22 +55,36 @@ var MazeStore = assign({}, eventEmitter.prototype, {
     updateConfig: function (dimension, value) {
         _config[dimension] = value;
     },
-    updateMarkerPosition: function (dimension, direction) {
+    updatePosition: function (key) {
         var updatedPosition = _.clone(_position);
-        var updatedValue = updatedPosition[dimension];
-        if (direction === '+') {
-            updatedValue++;
-        } else {
-            updatedValue--;
+        var move = false;
+        var positionMap = mapToArray(_position);
+        var updatedPositionMap = mapToArray(updatedPosition);
+        switch (key) {
+            case 37://left arrow
+                updatedPositionMap[0]--;
+                break;
+            case 38://up arrow
+                updatedPositionMap[1]++;
+                break;
+            case 39://right arrow
+                updatedPositionMap[0]++;
+                break;
+            case 40://down arrow
+                updatedPositionMap[1]--;
+                break;
+            case 83://s key
+                updatedPositionMap[2]++;
+                break;
+            case 87://w arrow
+                updatedPositionMap[2]--;
+                break;
         }
-        updatedPosition[dimension] = updatedValue;
-        if (_maze.evaluateMove(_position, updatedPosition)) {
-            if (_position.z === updatedPosition.z) {
-                _newLevel = false;
-            } else {
+        if (!_maze.evaluateMove(positionMap, updatedPositionMap)) {
+            if (_position.z !== updatedPositionMap[2]) {
                 _newLevel = true;
             }
-            _position = updatedPosition;
+            _position = arrayToMap(updatedPositionMap);
         }
     }
 });
@@ -80,7 +100,7 @@ MazeStore.dispatchToken = dispatcher.register(function(payload) {
             MazeStore.updateConfig(action.dimension, action.value);
             break;
         case 'UPDATE_POSITION':
-            MazeStore.updateMarkerPosition(action.dimension, action.direction);
+            MazeStore.updatePosition(action.key);
             break;
     }
 

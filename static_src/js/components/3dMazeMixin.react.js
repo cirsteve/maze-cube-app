@@ -1,5 +1,6 @@
 var React = require('react');
 var assign = require('object-assign');
+var MazeActions = require('../actions/MazeActions');
 
 var MazeRender = React.createClass({
     UNIT_LENGTH: 30,
@@ -8,6 +9,7 @@ var MazeRender = React.createClass({
     MARKER_FLR: 21,
     MARKER_ANIMATE_UP: true,
     componentDidMount: function () {
+        document.addEventListener("keydown", MazeActions.updatePosition, false);
     },
     createScene: function () {
         var scene = new THREE.Scene();
@@ -24,6 +26,15 @@ var MazeRender = React.createClass({
 
         var topPointLight =
               new THREE.PointLight(0xFFFFFF);
+
+        var rightPointLight =
+              new THREE.PointLight(0xFFFFFF);
+
+        // set its position
+         rightPointLight.position.x = width;
+         rightPointLight.position.y = 500;
+         rightPointLight.position.z = 130;
+         rightPointLight.rotation.x = Math.PI/.5;
 
         // set its position
          topPointLight.position.x = width;
@@ -81,9 +92,6 @@ var MazeRender = React.createClass({
         return (
                 <div ref="mazeTarget" className="maze-target"></div>);
     },
-    updateMarker: function () {
-        assign({}, this.marker, this.props.app.position);
-    },
     componentDidUpdate: function () {
         if (this.props.app.newLevel) {
             this.createScene();
@@ -125,8 +133,8 @@ var MazeRender = React.createClass({
         var sphereGeometry = new THREE.SphereGeometry( 5, 32, 32 );
         var sphereMaterial = new THREE.MeshPhongMaterial( {color: 0xffff00 } );
         this.marker = new THREE.Mesh( sphereGeometry, sphereMaterial );
-        this.marker.position.x = coords[0] + ul/2;
-        this.marker.position.y = coords[1] + ul/2;
+        this.marker.position.x = coords[0] * ul + ul/2;
+        this.marker.position.y = coords[1] * ul + ul/2;
         this.marker.castShadow = true;
 
         this.marker.position.z = this.MARKER_FLR;
@@ -136,30 +144,26 @@ var MazeRender = React.createClass({
     },
     createOpenFloor: function (coords) {
         var ul = this.UNIT_LENGTH;
-        var geometry = new THREE.CircleGeometry( 7, 32 );
+        var geometry = new THREE.CircleGeometry( 6, 32 );
         var material = new THREE.MeshBasicMaterial( {color: 0x000000 } );
         var circle = new THREE.Mesh( geometry, material );
-        circle.position.x = coords[0] - ul * .15;
-        circle.position.y = coords[1] + ul * .15;
+        circle.position.set(coords[0], coords[1], this.MARKER_FLR);
         circle.castShadow = true;
 
-        circle.position.z = this.MARKER_FLR;
 
         return circle;
     },
-    createOpenFloor: function (coords) {
+    createOpenCeiling: function (coords) {
         var ul = this.UNIT_LENGTH;
-        var geometry = new THREE.CylinderGeometry( 5, 5, 20, 32 );
-        var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+        var geometry = new THREE.CylinderGeometry( 5, 7, 10, 32 );
+        var material = new THREE.MeshPhongMaterial( {color: 0xFFA500} );
         var cylinder = new THREE.Mesh( geometry, material );
-        cylinder.position.x = coords[0] + ul * .15;
-        cylinder.position.y = coords[1] - ul * .15;
         cylinder.castShadow = true;
 
-        cylinder.position.z = this.MARKER_FLR;
-        scene.add( cylinder );
+        cylinder.position.set(coords[0], coords[1], this.MARKER_FLR);
+        cylinder.rotation.x = Math.PI/2;
 
-        return circle;
+        return cylinder;
     },
     bounceMarker: function () {
         var flr = this.MARKER_FLR;
@@ -244,28 +248,42 @@ var MazeRender = React.createClass({
         var ul = this.UNIT_LENGTH;
         var wd = this.WALL_DEPTH;
         if (wall.exists) {
-            scene.add(this.createWall(wd, ul, [ul * wall.x + ul, ul * wall.y + (ul/2)]));
+            scene.add(this.createWall(wd, ul, [
+                        ul * wall.x + ul,
+                        ul * wall.y + (ul/2)
+            ]));
         }
     },
     addHorizontalWall: function (scene, wall) {
         var ul = this.UNIT_LENGTH;
         var wd = this.WALL_DEPTH;
         if (wall.exists) {
-            scene.add(this.createWall(ul, wd, [ul * wall.x + (ul/2), ul * wall.y + ul]));
+            scene.add(this.createWall(ul, wd, [
+                        ul * wall.x + (ul/2),
+                        ul * wall.y + ul
+            ]));
         }
     },
     addCeilingWall: function (scene, wall) {
         var ul = this.UNIT_LENGTH;
         var wd = this.WALL_DEPTH;
         if (!wall.exists) {
-            scene.add(this.createOpenCeiling([ul * wall.x + (ul/2), ul * wall.y + (ul/2)]));
+            scene.add(this.createOpenCeiling(
+                        [
+                        ul * wall.x + ul * .3,
+                        ul * wall.y + ul * .7
+                        ]));
         }
     },
     addFloorWall: function (scene, wall) {
         var ul = this.UNIT_LENGTH;
         var wd = this.WALL_DEPTH;
         if (!wall.exists) {
-            scene.add(this.createOpenFloor([ul * wall.x + (ul/2), ul * wall.y + (ul/2)]));
+            scene.add(this.createOpenFloor(
+                        [
+                        ul * wall.x + ul * .7,
+                        ul * wall.y + ul * .3
+                        ]));
         }
     },
     addWalls: function (scene) {
